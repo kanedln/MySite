@@ -49,23 +49,19 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            padding: 10px 0; /* Adjusted padding for better logo fit */
         }
         
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
             text-decoration: none;
             display: flex;
             align-items: center;
         }
-        
-        .logo span {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+
+        .logo img { /* Style for the logo image */
+            height: 50px; /* Adjust height as needed */
+            width: auto;
+            display: block;
         }
         
         .nav-links {
@@ -100,7 +96,7 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 0.8)), url('/api/placeholder/1200/600') center/cover no-repeat;
+            background: linear-gradient(rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 0.8)), url('https://placehold.co/1200x600/333333/FFFFFF?text=Hero+Background') center/cover no-repeat;
             height: 80vh;
             display: flex;
             align-items: center;
@@ -200,18 +196,20 @@
             align-items: center;
         }
         
-        .about-img {
+        .about-img { /* Container for the image */
             flex: 1;
-            border-radius: 50px;
+            border-radius: 10px; /* General rounding for the container if needed */
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Center the image if it's narrower than container */
         }
         
-        .about-img img {
-            border-radius: 1000px;
-            width: 50%;
-            height: auto;
-            display: block;
+        .about-img img { /* Styling for the actual image */
+            border-radius: 50%; /* Makes the image circular */
+            width: 250px; /* Fixed width for the circular image */
+            height: 250px; /* Fixed height for the circular image */
+            object-fit: cover; /* Ensures the image covers the area without distortion */
+            display: inline-block; /* Allows centering if parent has text-align: center */
         }
         
         .about-text {
@@ -255,7 +253,7 @@
         
         .service-img {
             height: 200px;
-            background-color: var(--dark);
+            background-color: var(--dark-gray); /* Fallback color */
             position: relative;
             overflow: hidden;
         }
@@ -311,6 +309,7 @@
             height: 250px;
             position: relative;
             overflow: hidden;
+            background-color: var(--dark-gray); /* Fallback color */
         }
         
         .product-img img {
@@ -375,6 +374,7 @@
             height: 200px;
             position: relative;
             overflow: hidden;
+            background-color: var(--dark-gray); /* Fallback color */
         }
         
         .blog-img img {
@@ -435,26 +435,35 @@
         /* Testimonials Section */
         .testimonials {
             position: relative;
-            overflow: hidden;
+            overflow: hidden; /* To contain the slider */
         }
         
         .testimonial-slider {
             display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
+            overflow-x: auto; /* Allows horizontal scrolling */
+            scroll-snap-type: x mandatory; /* Snaps to slides */
             scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
             margin-bottom: 20px;
+            padding-bottom: 10px; /* Space for scrollbar if visible */
         }
         
         .testimonial-slider::-webkit-scrollbar {
-            display: none;
+            height: 8px;
         }
-        
+        .testimonial-slider::-webkit-scrollbar-thumb {
+            background: var(--primary-light);
+            border-radius: 4px;
+        }
+        .testimonial-slider::-webkit-scrollbar-track {
+            background: var(--gray);
+        }
+
         .testimonial-slide {
-            flex: 0 0 100%;
-            scroll-snap-align: start;
-            padding: 20px;
+            flex: 0 0 100%; /* Each slide takes full width of slider */
+            scroll-snap-align: start; /* Aligns slide to start of viewport */
+            padding: 0 10px; /* Some spacing around the card within the slide */
+            box-sizing: border-box;
         }
         
         .testimonial-card {
@@ -464,7 +473,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             position: relative;
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0 auto; /* Center card in the slide */
         }
         
         .testimonial-card::before {
@@ -496,6 +505,7 @@
             height: 60px;
             border-radius: 50%;
             overflow: hidden;
+            background-color: var(--gray); /* Fallback */
         }
         
         .author-img img {
@@ -519,6 +529,7 @@
             display: flex;
             justify-content: center;
             gap: 10px;
+            margin-top: 20px; /* Added margin */
         }
         
         .dot {
@@ -538,8 +549,14 @@
         /* Contact Section */
         .contact-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: 1fr; /* Default to 1 column */
             gap: 40px;
+        }
+
+        @media (min-width: 768px) { /* Apply 2 columns for larger screens */
+            .contact-content {
+                 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
         }
         
         .contact-info {
@@ -578,6 +595,10 @@
             justify-content: center;
             align-items: center;
             margin-right: 15px;
+            flex-shrink: 0; /* Prevent icon from shrinking */
+        }
+         .contact-details span {
+            word-break: break-word; /* Allow long text to wrap */
         }
         
         .contact-form {
@@ -629,7 +650,7 @@
         
         /* CTA Section */
         .cta {
-            background: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), url('/api/placeholder/1200/400') center/cover no-repeat;
+            background: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), url('https://placehold.co/1200x400/222222/FFFFFF?text=CTA+Background') center/cover no-repeat;
             color: var(--light);
             text-align: center;
             padding: 80px 20px;
@@ -687,6 +708,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            text-decoration: none; /* Ensure icons are not underlined */
             transition: all 0.3s ease;
         }
         
@@ -767,6 +789,7 @@
             border: none;
             border-radius: 5px 0 0 5px;
             outline: none;
+            color: var(--dark); /* Text color for input */
         }
         
         .newsletter-form button {
@@ -776,6 +799,7 @@
             border: none;
             border-radius: 0 5px 5px 0;
             cursor: pointer;
+            font-weight: 600; /* Make button text bolder */
             transition: all 0.3s ease;
         }
         
@@ -805,26 +829,37 @@
             .nav-links {
                 position: absolute;
                 right: 0;
-                top: 70px;
+                top: 70px; /* Match header height */
                 background-color: var(--dark);
                 flex-direction: column;
                 width: 100%;
                 text-align: center;
                 transform: translateX(100%);
-                transition: transform 0.5s ease-in;
-                z-index: 1;
+                transition: transform 0.5s ease-in-out; /* Smoother transition */
+                z-index: 99; /* Ensure it's above other content but below sticky header */
+                padding: 10px 0;
             }
-            
+
             .nav-links li {
                 opacity: 0;
+                padding: 10px 0; /* Add padding to list items */
+            }
+            .nav-links li a {
+                display: block; /* Make links take full width */
+                padding: 10px 0;
             }
             
             .burger {
                 display: block;
+                z-index: 100; /* Ensure burger is clickable */
             }
             
             .nav-active {
                 transform: translateX(0%);
+            }
+             .nav-active li { /* Animation for links when menu is active */
+                opacity: 1;
+                animation: navLinkFade 0.5s ease forwards var(--delay);
             }
             
             .hero-content h1 {
@@ -837,15 +872,27 @@
             
             .cta-buttons {
                 flex-direction: column;
+                align-items: center; /* Center buttons */
                 gap: 15px;
             }
+             .cta-buttons .btn {
+                width: 80%; /* Make buttons wider on mobile */
+                text-align: center;
+            }
             
-            .about-content, .contact-content {
+            .about-content {
                 flex-direction: column;
+            }
+            .contact-content { /* Already set to 1 column by default, this confirms for this breakpoint */
+                grid-template-columns: 1fr;
             }
             
             .about-img, .about-text {
                 width: 100%;
+                text-align: center; /* Center about text on mobile */
+            }
+            .about-img img {
+                margin-bottom: 20px; /* Space below image on mobile */
             }
             
             .section-title h2 {
@@ -861,6 +908,9 @@
             .hero-content h1 {
                 font-size: 2rem;
             }
+            .hero-content p {
+                font-size: 1rem;
+            }
             
             .section {
                 padding: 60px 0;
@@ -874,12 +924,37 @@
                 font-size: 1.8rem;
             }
             
+            /* Ensure cards stack nicely */
+            .services-grid, .products-grid, .blog-grid {
+                grid-template-columns: 1fr; 
+            }
             .service-card, .product-card, .blog-card {
                 margin-bottom: 20px;
             }
             
             .contact-form {
                 padding: 20px;
+            }
+            .cta h2 {
+                font-size: 2rem;
+            }
+            .footer-content {
+                grid-template-columns: 1fr; /* Stack footer items */
+                text-align: center;
+            }
+            .footer-social {
+                justify-content: center;
+            }
+            .footer-links h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .newsletter-form {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .newsletter-form input, .newsletter-form button {
+                border-radius: 5px; /* Full radius for stacked items */
             }
         }
         
@@ -900,15 +975,18 @@
     <header>
         <div class="container">
             <nav>
-                <a href="#" src="https://i.postimg.cc/vZ5tFByD/IMG-2684.png" class="logo"><span>Immersion Education Partners</span></a>
+                <!-- Updated Logo: Using an img tag -->
+                <a href="#" class="logo">
+                    <img id="site-logo" src="https://i.postimg.cc/vZ5tFByD/IMG-2684.png" alt="Immersion Education Partners Logo">
+                </a>
                 <ul class="nav-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Products</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Testimonials</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#hero">Home</a></li> <!-- Assuming hero section ID -->
+                    <li><a href="#about">About</a></li> <!-- Assuming about section ID -->
+                    <li><a href="#services">Services</a></li> <!-- Assuming services section ID -->
+                    <li><a href="#products">Products</a></li> <!-- Assuming products section ID -->
+                    <li><a href="#blog">Blog</a></li> <!-- Assuming blog section ID -->
+                    <li><a href="#testimonials">Testimonials</a></li> <!-- Assuming testimonials section ID -->
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
                 <div class="burger">
                     <div class="line1"></div>
@@ -920,41 +998,45 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="hero">
         <div class="container">
             <div class="hero-content">
                 <h1>Immersion Education Partners</h1>
                 <h2>Solutions for Immersion. Success for All.</h2>
                 <p>Dedicated to providing comprehensive educational solutions focused on multilingual learning, educational equity, and special education support. We empower teachers, schools, and learners to achieve excellence.</p>
                 <div class="cta-buttons">
-                    <a href="#" class="btn">Work With Me</a>
-                    <a href="#" class="btn btn-outline">Explore Resources</a>
+                    <a href="https://immersioneducationpartners.fillout.com/meeting-with-kane" class="btn">Work With Me</a>
+                    <a href="#products" class="btn btn-outline">Explore Resources</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section class="section">
+    <section class="section" id="about">
         <div class="container">
             <div class="section-title">
                 <h2>About Us</h2>
             </div>
             <div class="about-content">
-                <a href='https://postimg.cc/MvLjmVdQ' radius="1000px" target='_blank'><img src='https://i.postimg.cc/y81XBTRv/IMG-0311.jpg' border='0' alt='IMG-0311'/></a>
-               
+                <!-- Removed non-standard 'radius' attribute from <a> and 'border' from <img> -->
+                <div class="about-img">
+                    <a href='https://postimg.cc/MvLjmVdQ' target='_blank'>
+                        <img src='https://i.postimg.cc/y81XBTRv/IMG-0311.jpg' alt='Kane P. K.'/>
+                    </a>
+                </div>
                 <div class="about-text">
                     <h3>Educational Excellence Through Immersion</h3>
                     <p>Immersion Education Partners is committed to supporting educational excellence through multilingual learning, educational equity, and specialized support for diverse learners.</p>
                     <p>With extensive experience in curriculum development, teacher training, and educational consulting, we provide comprehensive solutions that benefit students, educators, and educational institutions.</p>
-                    <a href="#" class="btn">Learn More</a>
+                    <a href="https://immersioneducationpartners.fillout.com/meeting-with-kane" class="btn">Learn More</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section class="section services">
+    <section class="section services" id="services">
         <div class="container">
             <div class="section-title">
                 <h2>Our Services</h2>
@@ -962,32 +1044,32 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="/api/placeholder/400/200" alt="District/School Consulting">
+                        <img src="https://placehold.co/400x200/D4AF37/121212?text=Consulting" alt="District/School Consulting" onerror="this.src='https://placehold.co/400x200/cccccc/333333?text=Service+Image+Not+Found'">
                     </div>
                     <div class="service-content">
                         <h3>District/School Consulting</h3>
                         <p>Comprehensive consulting services for school districts implementing or improving multilingual programs. Includes curriculum review, implementation strategies, and professional development.</p>
-                        <a href="#" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                        <a href="#contact" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="/api/placeholder/400/200" alt="Teacher Coaching">
+                        <img src="https://placehold.co/400x200/F5E7A8/121212?text=Coaching" alt="Teacher Coaching" onerror="this.src='https://placehold.co/400x200/cccccc/333333?text=Service+Image+Not+Found'">
                     </div>
                     <div class="service-content">
                         <h3>Teacher Coaching</h3>
                         <p>Personalized coaching for educators looking to enhance their immersion teaching strategies, classroom management, and differentiation techniques for diverse learners.</p>
-                        <a href="#" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                        <a href="#contact" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="/api/placeholder/400/200" alt="Multilingual Tutoring">
+                        <img src="https://placehold.co/400x200/D4AF37/121212?text=Tutoring" alt="Multilingual Tutoring" onerror="this.src='https://placehold.co/400x200/cccccc/333333?text=Service+Image+Not+Found'">
                     </div>
                     <div class="service-content">
                         <h3>Multilingual Tutoring</h3>
                         <p>Specialized tutoring services for students in immersion programs, including language development, content mastery, and specific support for students with learning differences.</p>
-                        <a href="#" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                        <a href="#contact" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -998,7 +1080,7 @@
     </section>
 
     <!-- Products Section -->
-    <section class="section">
+    <section class="section" id="products">
         <div class="container">
             <div class="section-title">
                 <h2>Educational Products</h2>
@@ -1006,47 +1088,47 @@
             <div class="products-grid">
                 <div class="product-card">
                     <div class="product-img">
-                        <img src="/api/placeholder/300/300" alt="Morning Slides Bundle">
+                        <img src="https://placehold.co/300x300/F5E7A8/121212?text=Morning+Slides" alt="Morning Slides Bundle" onerror="this.src='https://placehold.co/300x300/dddddd/333333?text=Product+Not+Found'">
                     </div>
                     <div class="product-content">
                         <h3>Morning Slides Bundle</h3>
                         <p>Complete set of multilingual morning routine slides for immersion classrooms. Includes daily activities, vocabulary practice, and community building.</p>
                         <div class="product-price">$24.99</div>
-                        <a href="#" class="btn">View Product</a>
+                        <a href="https://www.teacherspayteachers.com/Store/Immersion-Education-Partners" target="_blank" class="btn">View Product</a>
                     </div>
                 </div>
                 <div class="product-card">
                     <div class="product-img">
-                        <img src="/api/placeholder/300/300" alt="Immersion Planner">
+                        <img src="https://placehold.co/300x300/D4AF37/121212?text=Teacher+Planner" alt="Immersion Planner" onerror="this.src='https://placehold.co/300x300/dddddd/333333?text=Product+Not+Found'">
                     </div>
                     <div class="product-content">
                         <h3>Immersion Teacher Planner</h3>
                         <p>Comprehensive planning tool designed specifically for immersion educators. Features dual-language planning templates and assessment trackers.</p>
                         <div class="product-price">$19.99</div>
-                        <a href="#" class="btn">View Product</a>
+                        <a href="https://www.teacherspayteachers.com/Store/Immersion-Education-Partners" target="_blank" class="btn">View Product</a>
                     </div>
                 </div>
                 <div class="product-card">
                     <div class="product-img">
-                        <img src="/api/placeholder/300/300" alt="Vocabulary Toolkit">
+                        <img src="https://placehold.co/300x300/F5E7A8/121212?text=Vocab+Toolkit" alt="Vocabulary Toolkit" onerror="this.src='https://placehold.co/300x300/dddddd/333333?text=Product+Not+Found'">
                     </div>
                     <div class="product-content">
                         <h3>Multilingual Vocabulary Toolkit</h3>
                         <p>Complete resource for building strong vocabulary in immersion classrooms. Includes games, activities, and assessment tools in multiple languages.</p>
                         <div class="product-price">$29.99</div>
-                        <a href="#" class="btn">View Product</a>
+                        <a href="https://www.teacherspayteachers.com/Store/Immersion-Education-Partners" target="_blank" class="btn">View Product</a>
                     </div>
                 </div>
             </div>
             <div style="text-align: center; margin-top: 40px;">
-                <a href="teacherspayteachers.com/store/immersion-education-partners" class="btn">Shop on TpT</a>
-                <a href="teacherspayteachers.com/store/immersion-education-partners" class="btn btn-outline" style="margin-left: 15px;">Shop Bundles</a>
+                <a href="https://www.teacherspayteachers.com/Store/Immersion-Education-Partners" target="_blank" class="btn">Shop on TpT</a>
+                <a href="https://www.teacherspayteachers.com/Store/Immersion-Education-Partners/Category/Bundles-473270" target="_blank" class="btn btn-outline" style="margin-left: 15px;">Shop Bundles</a>
             </div>
         </div>
     </section>
 
     <!-- Blog Section -->
-    <section class="section blog">
+    <section class="section blog" id="blog">
         <div class="container">
             <div class="section-title">
                 <h2>Latest from Our Blog</h2>
@@ -1054,7 +1136,7 @@
             <div class="blog-grid">
                 <div class="blog-card">
                     <div class="blog-img">
-                        <img src="/api/placeholder/400/200" alt="Blog Post">
+                        <img src="https://placehold.co/400x200/D4AF37/121212?text=Blog+Post+1" alt="Blog Post" onerror="this.src='https://placehold.co/400x200/eeeeee/333333?text=Blog+Image+Not+Found'">
                     </div>
                     <div class="blog-content">
                         <div class="blog-date">May 1, 2025</div>
@@ -1065,7 +1147,7 @@
                 </div>
                 <div class="blog-card">
                     <div class="blog-img">
-                        <img src="/api/placeholder/400/200" alt="Blog Post">
+                        <img src="https://placehold.co/400x200/F5E7A8/121212?text=Blog+Post+2" alt="Blog Post" onerror="this.src='https://placehold.co/400x200/eeeeee/333333?text=Blog+Image+Not+Found'">
                     </div>
                     <div class="blog-content">
                         <div class="blog-date">April 15, 2025</div>
@@ -1076,7 +1158,7 @@
                 </div>
                 <div class="blog-card">
                     <div class="blog-img">
-                        <img src="/api/placeholder/400/200" alt="Blog Post">
+                        <img src="https://placehold.co/400x200/D4AF37/121212?text=Blog+Post+3" alt="Blog Post" onerror="this.src='https://placehold.co/400x200/eeeeee/333333?text=Blog+Image+Not+Found'">
                     </div>
                     <div class="blog-content">
                         <div class="blog-date">April 3, 2025</div>
@@ -1093,7 +1175,7 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="section testimonials">
+    <section class="section testimonials" id="testimonials">
         <div class="container">
             <div class="section-title">
                 <h2>What People Say</h2>
@@ -1106,7 +1188,7 @@
                         </div>
                         <div class="testimonial-author">
                             <div class="author-img">
-                                <img src="/api/placeholder/100/100" alt="Testimonial Author">
+                                <img src="https://placehold.co/100x100/bbbbbb/FFFFFF?text=AR" alt="Amanda Rodriguez" onerror="this.src='https://placehold.co/100x100/bbbbbb/FFFFFF?text=Author'">
                             </div>
                             <div class="author-info">
                                 <h4>Amanda Rodriguez</h4>
@@ -1122,7 +1204,7 @@
                         </div>
                         <div class="testimonial-author">
                             <div class="author-img">
-                                <img src="/api/placeholder/100/100" alt="Testimonial Author">
+                                <img src="https://placehold.co/100x100/bbbbbb/FFFFFF?text=MC" alt="Michael Chen" onerror="this.src='https://placehold.co/100x100/bbbbbb/FFFFFF?text=Author'">
                             </div>
                             <div class="author-info">
                                 <h4>Michael Chen</h4>
@@ -1138,7 +1220,7 @@
                         </div>
                         <div class="testimonial-author">
                             <div class="author-img">
-                                <img src="/api/placeholder/100/100" alt="Testimonial Author">
+                                <img src="https://placehold.co/100x100/bbbbbb/FFFFFF?text=SP" alt="Sofia Patel" onerror="this.src='https://placehold.co/100x100/bbbbbb/FFFFFF?text=Author'">
                             </div>
                             <div class="author-info">
                                 <h4>Sofia Patel</h4>
@@ -1149,9 +1231,7 @@
                 </div>
             </div>
             <div class="testimonial-dots">
-                <div class="dot active"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
+                <!-- Dots will be controlled by JavaScript -->
             </div>
         </div>
     </section>
@@ -1193,18 +1273,18 @@
                     </ul>
                 </div>
                 <div class="contact-form">
-                    <form>
+                    <form id="contactForm">
                         <div class="form-group">
                             <label for="name">Full Name</label>
-                            <input type="text" id="name" class="form-control" placeholder="Your name">
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Your name" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email Address</label>
-                            <input type="email" id="email" class="form-control" placeholder="Your email">
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Your email" required>
                         </div>
                         <div class="form-group">
                             <label for="service">Service Interested In</label>
-                            <select id="service" class="form-control">
+                            <select id="service" name="service" class="form-control">
                                 <option value="">Select a service</option>
                                 <option value="consulting">District/School Consulting</option>
                                 <option value="coaching">Teacher Coaching</option>
@@ -1214,7 +1294,7 @@
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" class="form-control" placeholder="How can we help you?"></textarea>
+                            <textarea id="message" name="message" class="form-control" placeholder="How can we help you?" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-submit">Send Message</button>
                     </form>
@@ -1223,4 +1303,225 @@
         </div>
     </section>
 
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <a href="#" class="footer-logo">Immersion Education Partners</a>
+                    <p class="footer-text">Solutions for Immersion. Success for All. Empowering educators and learners in multilingual environments.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Stay updated with our latest news, resources, and offers.</p>
+                    <form id="newsletterForm" class="newsletter-form">
+                        <input type="email" name="newsletter_email" placeholder="Your email address" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Immersion Education Partners. All Rights Reserved. Designed by <a href="https://yourportfolio.com" target="_blank">Your Name/Company</a>.</p>
+            </div>
+        </div>
+    </footer>
 
+    <script>
+        // Mobile Navigation Toggle
+        const burger = document.querySelector('.burger');
+        const navLinks = document.querySelector('.nav-links');
+        const navLinkItems = document.querySelectorAll('.nav-links li');
+
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-active');
+
+            // Animate Links
+            navLinkItems.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = '';
+                } else {
+                    link.style.setProperty('--delay', `${index / 7 + 0.3}s`); // Stagger animation
+                    link.style.animation = `navLinkFade 0.5s ease forwards var(--delay)`;
+                }
+            });
+
+            // Burger Animation
+            burger.classList.toggle('toggle');
+        });
+
+        // Close mobile menu when a link is clicked
+        navLinkItems.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('nav-active')) {
+                    navLinks.classList.remove('nav-active');
+                    navLinkItems.forEach(item => item.style.animation = '');
+                    burger.classList.remove('toggle');
+                }
+            });
+        });
+
+
+        // Testimonial Slider
+        const slider = document.querySelector('.testimonial-slider');
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const dotsContainer = document.querySelector('.testimonial-dots');
+        let currentSlide = 0;
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        function createDots() {
+            if (!dotsContainer) return;
+            dotsContainer.innerHTML = ''; // Clear existing dots
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    goToSlide(index);
+                });
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function updateDots() {
+            if (!dotsContainer) return;
+            const dots = dotsContainer.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function goToSlide(slideIndex) {
+            if (!slider) return;
+            const slideWidth = slides[0].offsetWidth; // Assuming all slides have the same width
+            slider.scrollLeft = slideIndex * slideWidth;
+            currentSlide = slideIndex;
+            updateDots();
+        }
+        
+        // Auto-play testimonials (optional)
+        let autoSlideInterval;
+        function startAutoSlide() {
+            if (!slider || slides.length <=1) return; // Don't auto-slide if no slider or only one slide
+            stopAutoSlide(); // Clear existing interval
+            autoSlideInterval = setInterval(() => {
+                currentSlide = (currentSlide + 1) % slides.length;
+                goToSlide(currentSlide);
+            }, 5000); // Change slide every 5 seconds
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+
+        if (slider) {
+            slider.addEventListener('mouseenter', stopAutoSlide);
+            slider.addEventListener('mouseleave', startAutoSlide);
+            // Touch events for swipe
+            slider.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+                stopAutoSlide();
+            });
+
+            slider.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipeGesture();
+                startAutoSlide(); // Restart auto-slide after manual interaction
+            });
+            
+             // Update currentSlide on manual scroll
+            slider.addEventListener('scroll', () => {
+                const slideWidth = slides[0].offsetWidth;
+                const newSlideIndex = Math.round(slider.scrollLeft / slideWidth);
+                if (newSlideIndex !== currentSlide) {
+                    currentSlide = newSlideIndex;
+                    updateDots();
+                }
+            });
+        }
+        
+        function handleSwipeGesture() {
+            if (touchEndX < touchStartX && (touchStartX - touchEndX > 50)) { // Swiped left
+                currentSlide = Math.min(currentSlide + 1, slides.length - 1);
+            }
+            if (touchEndX > touchStartX && (touchEndX - touchStartX > 50)) { // Swiped right
+                currentSlide = Math.max(currentSlide - 1, 0);
+            }
+            goToSlide(currentSlide);
+        }
+
+
+        // Smooth scrolling for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Set current year in footer
+        const currentYearSpan = document.getElementById('currentYear');
+        if (currentYearSpan) {
+            currentYearSpan.textContent = new Date().getFullYear();
+        }
+
+        // Form submission (basic example, prevent default and log)
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                console.log('Contact form submitted:');
+                for (let [key, value] of formData.entries()) {
+                    console.log(key + ': ' + value);
+                }
+                // Here you would typically send the data to a server
+                alert('Thank you for your message! (This is a demo)');
+                this.reset();
+            });
+        }
+
+        const newsletterForm = document.getElementById('newsletterForm');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                console.log('Newsletter subscription for:', email);
+                // Here you would typically send the data to a server
+                alert('Thank you for subscribing! (This is a demo)');
+                this.reset();
+            });
+        }
+        
+        // Initialize testimonial slider features
+        if (slides.length > 0) {
+            createDots();
+            startAutoSlide(); // Start auto-sliding
+        }
+
+    </script>
+</body>
+</html>
