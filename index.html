@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
@@ -215,9 +215,191 @@
         }
         .social-link:hover { color: var(--brand-gold); }
 
+        /* ======================= MEDIA & IMPACT SECTION ======================= */
+        .media-section {
+            background: var(--bg-surface);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .media-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 3rem;
+        }
+
+        .media-controls {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .control-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid var(--border-strong);
+            background: var(--bg-card);
+            color: var(--text-head);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .control-btn:hover {
+            border-color: var(--brand-gold);
+            color: var(--brand-gold);
+            transform: scale(1.05);
+        }
+
+        .media-slider-container {
+            margin: 0 -2rem;
+            padding: 0 2rem;
+        }
+
+        .media-track {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 2rem;
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .media-track::-webkit-scrollbar { display: none; }
+
+        .media-card {
+            flex: 0 0 400px;
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-light);
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .media-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-float);
+            border-color: var(--brand-gold-light);
+        }
+
+        .media-thumb {
+            width: 100%;
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .media-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .media-card:hover .media-thumb img {
+            transform: scale(1.05);
+        }
+
+        .media-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(15, 23, 42, 0.8);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            backdrop-filter: blur(4px);
+        }
+
+        .play-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .media-card:hover .play-overlay {
+            opacity: 1;
+            background: rgba(0,0,0,0.4);
+        }
+
+        .play-btn {
+            width: 60px;
+            height: 60px;
+            background: var(--brand-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 4px 15px rgba(194, 157, 70, 0.4);
+        }
+
+        .media-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .media-source {
+            font-size: 0.85rem;
+            color: var(--brand-gold);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .media-card h4 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .media-card p {
+            font-size: 0.95rem;
+            color: var(--text-body);
+            margin-bottom: 1.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .media-link {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--text-head);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .media-link:hover {
+            color: var(--brand-gold);
+            gap: 0.75rem;
+        }
+
         /* ======================= VISION SECTION ======================= */
         .vision-section {
-            background: var(--bg-surface);
+            background: var(--bg-body);
             text-align: center;
         }
         .vision-card {
@@ -257,6 +439,7 @@
             .member-row, .member-row.reverse { grid-template-columns: 1fr; gap: 3rem; }
             .member-img-container { max-width: 500px; margin: 0 auto; }
             .footer-grid { grid-template-columns: 1fr 1fr; }
+            .media-card { flex: 0 0 320px; }
         }
     </style>
 </head>
@@ -266,7 +449,7 @@
     <header id="header">
         <div class="container">
             <div class="nav-wrapper">
-                <a href="#" class="logo">
+                <a href="index.html" class="logo">
                     <img src="https://i.postimg.cc/tRv1d680/Untitled-design-(1).png" alt="IEP" class="logo-img">
                     <span class="logo-text">IEP</span>
                 </a>
@@ -305,7 +488,7 @@
                 <!-- Kane Neubauer -->
                 <div class="member-row reveal">
                     <div class="member-img-container">
-                        <img src="https://i.postimg.cc/ht68DvNB/Screenshot_2026_01_26_121017.png&auto=format&fit=crop" alt="Kane Neubauer" class="member-img">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop" alt="Kane Neubauer" class="member-img">
                     </div>
                     <div class="member-content">
                         <span class="member-title">CEO & Founder</span>
@@ -342,10 +525,99 @@
                         </div>
                     </div>
                     <div class="member-img-container">
-                        <img src="https://i.postimg.cc/RZx30tXh/frank-Header.png&auto=format&fit=crop" alt="Frank Lammers" class="member-img">
+                        <img src="https://i.postimg.cc/BbMppJ7x/Frank-Photo.jpg" alt="Frank Lammers" class="member-img">
                     </div>
                 </div>
 
+            </div>
+        </section>
+
+        <!-- Media & Impact Section (Carousel) -->
+        <section class="section-padding media-section">
+            <div class="container">
+                <div class="media-header reveal">
+                    <div class="media-title-group">
+                        <span class="overline">In The Spotlight</span>
+                        <h2>Media & Field Impact</h2>
+                        <p>Documenting our contributions to the advancement of immersion education.</p>
+                    </div>
+                    <div class="media-controls">
+                        <button class="control-btn" id="slidePrev" aria-label="Previous">
+                            <i data-lucide="chevron-left"></i>
+                        </button>
+                        <button class="control-btn" id="slideNext" aria-label="Next">
+                            <i data-lucide="chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="media-slider-container reveal">
+                    <div class="media-track" id="mediaTrack">
+                        
+                        <!-- Video Item -->
+                        <div class="media-card">
+                            <div class="media-thumb">
+                                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop" alt="Interview Thumb">
+                                <span class="media-badge">Video</span>
+                                <div class="play-overlay">
+                                    <div class="play-btn"><i data-lucide="play" fill="currentColor"></i></div>
+                                </div>
+                            </div>
+                            <div class="media-info">
+                                <span class="media-source">Education Today Network</span>
+                                <h4>Redefining Biliteracy: An Interview with Kane Neubauer</h4>
+                                <p>A deep dive into the future of dual-language program design and the shift toward global competency.</p>
+                                <a href="#" class="media-link">Watch Interview <i data-lucide="arrow-right" size="16"></i></a>
+                            </div>
+                        </div>
+
+                        <!-- Article Item -->
+                        <div class="media-card">
+                            <div class="media-thumb">
+                                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1973&auto=format&fit=crop" alt="Article Thumb">
+                                <span class="media-badge">Journal</span>
+                            </div>
+                            <div class="media-info">
+                                <span class="media-source">The Multilingual Learner</span>
+                                <h4>The Architecture of Opportunity: Sustainable Models for Districts</h4>
+                                <p>Frank Lammers shares research on the long-term success of language allocation in urban districts.</p>
+                                <a href="#" class="media-link">Read Full Article <i data-lucide="external-link" size="16"></i></a>
+                            </div>
+                        </div>
+
+                        <!-- News Item -->
+                        <div class="media-card">
+                            <div class="media-thumb">
+                                <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=1856&auto=format&fit=crop" alt="News Thumb">
+                                <span class="media-badge">Press Release</span>
+                            </div>
+                            <div class="media-info">
+                                <span class="media-source">National School Board Assoc.</span>
+                                <h4>IEP Partnership Launches State-Wide Bilingual Initiative</h4>
+                                <p>Announcement of the new partnership between IEP and the Department of Education to expand access.</p>
+                                <a href="#" class="media-link">View Release <i data-lucide="arrow-right" size="16"></i></a>
+                            </div>
+                        </div>
+
+                        <!-- Video Item 2 -->
+                        <div class="media-card">
+                            <div class="media-thumb">
+                                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070&auto=format&fit=crop" alt="Webinar Thumb">
+                                <span class="media-badge">Webinar</span>
+                                <div class="play-overlay">
+                                    <div class="play-btn"><i data-lucide="play" fill="currentColor"></i></div>
+                                </div>
+                            </div>
+                            <div class="media-info">
+                                <span class="media-source">CAL Summer Series</span>
+                                <h4>Cross-Linguistic Transfer Strategies in K-5 Classrooms</h4>
+                                <p>Frank Lammers leads a global workshop on bridging concepts between languages in the classroom.</p>
+                                <a href="#" class="media-link">Watch Webinar <i data-lucide="arrow-right" size="16"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -444,6 +716,19 @@
         }, { threshold: 0.1 });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Media Slider Control
+        const track = document.getElementById('mediaTrack');
+        const nextBtn = document.getElementById('slideNext');
+        const prevBtn = document.getElementById('slidePrev');
+
+        nextBtn.addEventListener('click', () => {
+            track.scrollLeft += 420; // Card width + gap
+        });
+
+        prevBtn.addEventListener('click', () => {
+            track.scrollLeft -= 420;
+        });
     </script>
 </body>
 </html>
